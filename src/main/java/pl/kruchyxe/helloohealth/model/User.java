@@ -2,19 +2,17 @@ package pl.kruchyxe.helloohealth.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 @Data
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
 @AllArgsConstructor
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String firstName;
