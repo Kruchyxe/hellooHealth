@@ -1,6 +1,7 @@
 package pl.kruchyxe.helloohealth.service;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.kruchyxe.helloohealth.model.Customer;
 import pl.kruchyxe.helloohealth.repository.CustomerRepository;
@@ -12,12 +13,12 @@ import java.util.Optional;
 @AllArgsConstructor
 public class CustomerService {
 
-    public CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
 
-    public List<Customer> findAllCustomers() {
+
+    public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
-
     }
 
     public Optional<Customer> findCustomerById(Long id){

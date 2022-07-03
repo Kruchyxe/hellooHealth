@@ -3,6 +3,7 @@ package pl.kruchyxe.helloohealth.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -12,7 +13,6 @@ import javax.validation.constraints.Size;
 @Table(name = "customers")
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
 public class Customer {
 
     @Id
