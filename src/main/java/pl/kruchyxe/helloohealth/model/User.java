@@ -2,26 +2,47 @@ package pl.kruchyxe.helloohealth.model;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+import java.util.Collection;
 
 @Entity
 @Table(name = "users")
 @Data
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
 @AllArgsConstructor
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "First name may not be blank")
+    @Size(min = 1, max = 40)
     private String firstName;
 
+    @NotBlank(message = "Last name may not be blank")
+    @Size(min = 1, max = 45)
     private String lastName;
 
+    @NotBlank(message = "Email may not be blank")
+    @Size(min=1,max=45)
+    @Email(message = "Please provide valid email address")
     private String email;
 
+    @NotBlank(message = "Password may not be blank")
+    @Size(min=10)
     private String password;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name="users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "id"))
+
+    private Collection<Role> roles;
 }
