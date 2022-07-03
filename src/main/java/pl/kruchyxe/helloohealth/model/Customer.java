@@ -32,11 +32,11 @@ public class Customer {
     private int age;
 
     @NotBlank(message = "Weight may not be blank")
-    @Size(min = 2, message = "Provide value in (kg)")
+    @Size(min = 2, max = 3, message = "Provide value in (kg)")
     private double weight;
 
     @NotBlank(message = "Height may not be blank")
-    @Size(min = 3, message = "Provide value in (cm)")
+    @Size(min = 2, max = 3, message = "Provide value in (cm)")
     private double height;
 
     @NotBlank
