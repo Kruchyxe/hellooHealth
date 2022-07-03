@@ -5,8 +5,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import pl.kruchyxe.helloohealth.model.Customer;
 import pl.kruchyxe.helloohealth.repository.CustomerRepository;
-
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
