@@ -2,6 +2,7 @@ package pl.kruchyxe.helloohealth.controller;
 
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import pl.kruchyxe.helloohealth.model.Customer;
@@ -18,13 +19,13 @@ public class CustomerController {
     private CustomerService customerService;
 
 
-    @GetMapping("")
+    @GetMapping("/all")
     public List<Customer> getCustomer() {
         return customerService.getAllCustomers();
 
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/find/{id}")
     public Optional<Customer> getSingleCustomer(@PathVariable long id) {
         return Optional.of(customerService.findCustomerById(id)
                 .orElseThrow(() -> {
@@ -46,6 +47,12 @@ public class CustomerController {
     @PostMapping("/add")
     public void addingCustomer(@RequestBody Customer customer){
         customerService.addCustomer(customer);
+    }
+
+    @PutMapping("/update")
+    public void updatingCustomer(@RequestBody Customer customer){
+        customerService.updateCustomer(customer);
+
     }
 
 }

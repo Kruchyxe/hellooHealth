@@ -14,8 +14,6 @@ public class CustomerService {
 
     private CustomerRepository customerRepository;
 
-
-
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll(PageRequest.of(0,5)).getContent();
     }
@@ -32,8 +30,8 @@ public class CustomerService {
         customerRepository.deleteById(id);
     }
 
-    public void updateCustomer(Customer customer){
-        customerRepository.save(customer);
+    public Customer updateCustomer(Customer customer){
+       return customerRepository.save(customer);
     }
 
 
